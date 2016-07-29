@@ -24,14 +24,17 @@
           %li
             %a{:href => "http://regionales.voxe.org/dons/", :target => "_blank"}= t 'welcome.donate'
     .newsletter
-      %form{:action => "http://api.mailerlite.com/api/v2/groups/4044519/subscribers", :method => "post"}
+      = form_tag("/web/add-subscribers", method: "post", remote: true) do
         .toolbox
           %a{:href => "."} Voxe.org
         .getintouch
-          %label
-            %strong= t 'welcome.last_news'
-          %input{:name => "EMAIL", :placeholder => "Email", :type => "email"}
-          %input{:type => "submit", :value => "OK"}
+          - if params[:success]
+            %label Merci d'avoir souscris à la newsletter !
+          - else
+            %label
+              %strong= t 'welcome.last_news'
+            %input{:name => "email", :placeholder => "Email", :type => "email"}
+            %input{:type => "submit", :value => "OK"}
      
   .content
     .compare

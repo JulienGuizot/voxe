@@ -13,6 +13,21 @@ class Web::ApplicationController < ApplicationController
     end
   end
 
+  def add_subscribers
+
+
+    client = MailerLite::Client.new(api_key: 'ded4fd9599c38105e7ca2522ab24bd25')
+
+    groupId = 4044519
+
+      
+
+    new_sub = client.create_subscriber(groupId, params[:email], options = {})
+
+    redirect_to welcome_path(success: true)
+
+  end
+
   AVAILABLE_LANGUAGES = I18n.available_locales.map do |l| l.to_s end
   def set_locale
     if params[:locale].present? and params[:locale].in?(AVAILABLE_LANGUAGES)

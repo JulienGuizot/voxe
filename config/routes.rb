@@ -17,6 +17,10 @@ Joinplato::Application.routes.draw do
     match '/' => 'dashboard#index'
   end
 
+  namespace :web do
+    post 'add-subscribers' => 'application#add_subscribers', :defaults => { :format => 'json' }
+  end
+
   # New admin (Let the old live until candidate BO isn't finished)
   namespace :new_admin do
     match '/' => 'elections#index'

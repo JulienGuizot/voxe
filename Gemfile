@@ -3,6 +3,9 @@ source 'http://rubygems.org'
 ruby '2.2.2'
 gem 'rails', '3.2.22'
 
+gem 'mailerlite'
+gem 'faraday', '<= 0.9.2'
+
 group :development do
   # http://documentcloud.github.com/jammit/
   gem 'jammit'
